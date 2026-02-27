@@ -63,7 +63,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
       <section className="relative bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
 
-        <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="container mx-auto px-3 sm:px-4 py-12 sm:py-20 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-3 mb-6 animate-fade-in">
               <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl shadow-lg flex items-center justify-center">
@@ -71,7 +71,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-black mb-6 animate-slide-up">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black mb-4 sm:mb-6 animate-slide-up px-4">
               {profile?.full_name
                 ? (language === 'hi'
                     ? `नमस्ते ${profile.full_name.split(' ')[0]}!`
@@ -80,46 +80,46 @@ export function LandingPage({ onStart }: LandingPageProps) {
               }
             </h1>
 
-            <p className="text-xl md:text-2xl mb-4 font-semibold text-emerald-50 animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            <p className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 font-semibold text-emerald-50 animate-slide-up px-4" style={{ animationDelay: '0.1s' }}>
               {t('heroSubtitle')}
             </p>
 
-            <p className="text-lg mb-10 text-emerald-100 max-w-2xl mx-auto animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-base sm:text-lg mb-8 sm:mb-10 text-emerald-100 max-w-2xl mx-auto animate-slide-up px-4" style={{ animationDelay: '0.2s' }}>
               {t('heroDescription')}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-scale-in" style={{ animationDelay: '0.3s' }}>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center animate-scale-in px-4" style={{ animationDelay: '0.3s' }}>
               <button
                 onClick={scrollToQuickStart}
-                className="px-8 py-4 bg-white text-emerald-700 font-bold text-lg rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-emerald-700 font-bold text-base sm:text-lg rounded-lg sm:rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <Zap className="w-5 h-5" />
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
                 {t('startNow')}
               </button>
               <button
                 onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold text-lg rounded-xl border-2 border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-white/10 backdrop-blur-sm text-white font-bold text-base sm:text-lg rounded-lg sm:rounded-xl border-2 border-white/30 hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 {t('learnMore')}
-                <ChevronDown className="w-5 h-5" />
+                <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
 
-            <div className="mt-12 flex items-center justify-center gap-6 text-emerald-100 animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <div className="flex items-center gap-2">
-                <Languages className="w-5 h-5" />
+            <div className="mt-8 sm:mt-12 flex items-center justify-center gap-4 sm:gap-6 text-emerald-100 animate-fade-in px-4" style={{ animationDelay: '0.4s' }}>
+              <div className="flex items-center gap-1 sm:gap-2">
+                <Languages className="w-4 h-4 sm:w-5 sm:h-5" />
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 rounded-lg transition-all ${language === 'en' ? 'bg-white/20 font-bold' : 'hover:bg-white/10'}`}
+                  className={`px-2 sm:px-3 py-1 text-sm sm:text-base rounded-lg transition-all ${language === 'en' ? 'bg-white/20 font-bold' : 'hover:bg-white/10'}`}
                 >
                   English
                 </button>
               </div>
-              <div className="w-px h-6 bg-white/30"></div>
-              <div className="flex items-center gap-2">
+              <div className="w-px h-5 sm:h-6 bg-white/30"></div>
+              <div className="flex items-center gap-1 sm:gap-2">
                 <button
                   onClick={() => setLanguage('hi')}
-                  className={`px-3 py-1 rounded-lg transition-all ${language === 'hi' ? 'bg-white/20 font-bold' : 'hover:bg-white/10'}`}
+                  className={`px-2 sm:px-3 py-1 text-sm sm:text-base rounded-lg transition-all ${language === 'hi' ? 'bg-white/20 font-bold' : 'hover:bg-white/10'}`}
                 >
                   हिंदी
                 </button>
@@ -243,13 +243,13 @@ export function LandingPage({ onStart }: LandingPageProps) {
         </div>
       </section>
 
-      <section ref={quickStartRef} className="py-20 bg-gradient-to-b from-gray-50 to-white scroll-mt-16">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
+      <section ref={quickStartRef} className="py-12 sm:py-20 bg-gradient-to-b from-gray-50 to-white scroll-mt-16">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-3 sm:mb-4">
               {t('quickStart')}
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-lg sm:text-xl text-gray-600">
               {language === 'hi'
                 ? 'अपनी फसल और समस्या का चयन करें'
                 : 'Select your crop and describe the issue'}
@@ -257,7 +257,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-10 space-y-8 border border-gray-100">
+            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-8 md:p-10 space-y-6 sm:space-y-8 border border-gray-100">
               <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-6 border border-emerald-200">
                 <p className="text-lg font-semibold text-gray-900 leading-relaxed">
                   {t('howItWorks')}
@@ -275,7 +275,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
                     <p className="mt-4 text-lg text-gray-700 font-semibold">{t('loading')}</p>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     {crops.map((crop) => (
                       <button
                         key={crop.id}
@@ -283,13 +283,13 @@ export function LandingPage({ onStart }: LandingPageProps) {
                           setSelectedCrop(crop);
                           setGrowthStage('');
                         }}
-                        className={`p-5 rounded-xl border-2 transition-all duration-300 text-left transform hover:scale-105 ${
+                        className={`p-3 sm:p-5 rounded-lg sm:rounded-xl border-2 transition-all duration-300 text-left transform hover:scale-105 ${
                           selectedCrop?.id === crop.id
                             ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-xl'
                             : 'border-gray-200 hover:border-emerald-300 bg-white shadow-lg hover:shadow-xl'
                         }`}
                       >
-                        <div className="font-bold text-lg text-gray-900">
+                        <div className="font-bold text-sm sm:text-lg text-gray-900">
                           {language === 'hi' ? crop.name_hi : crop.name_en}
                         </div>
                       </button>
@@ -300,15 +300,15 @@ export function LandingPage({ onStart }: LandingPageProps) {
 
               {selectedCrop && (
                 <div className="animate-scale-in">
-                  <label className="text-xl font-black text-gray-900 mb-6 block">
+                  <label className="text-lg sm:text-xl font-black text-gray-900 mb-4 sm:mb-6 block">
                     {t('selectGrowthStage')}
                   </label>
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     {selectedCrop.growth_stages.map((stage) => (
                       <button
                         key={stage.stage}
                         onClick={() => setGrowthStage(stage.stage)}
-                        className={`p-5 rounded-xl border-2 transition-all duration-300 text-base font-bold transform hover:scale-105 ${
+                        className={`p-3 sm:p-5 rounded-lg sm:rounded-xl border-2 transition-all duration-300 text-sm sm:text-base font-bold transform hover:scale-105 ${
                           growthStage === stage.stage
                             ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-teal-50 text-gray-900 shadow-xl'
                             : 'border-gray-200 hover:border-emerald-300 text-gray-800 bg-white shadow-lg hover:shadow-xl'
@@ -338,7 +338,7 @@ export function LandingPage({ onStart }: LandingPageProps) {
               <button
                 onClick={handleStart}
                 disabled={!canStart}
-                className={`w-full py-5 rounded-xl font-black text-xl transition-all duration-300 transform ${
+                className={`w-full py-4 sm:py-5 rounded-xl font-black text-lg sm:text-xl transition-all duration-300 transform ${
                   canStart
                     ? 'bg-gradient-to-r from-emerald-600 to-teal-600 text-white hover:from-emerald-700 hover:to-teal-700 shadow-2xl hover:shadow-emerald-300 hover:scale-105'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-lg'

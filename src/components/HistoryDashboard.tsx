@@ -105,92 +105,92 @@ export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardPr
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-lime-50">
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        <div className="mb-8 animate-fade-in">
-          <h1 className="text-4xl font-black bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-900 bg-clip-text text-transparent mb-2">
+      <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-7xl">
+        <div className="mb-6 sm:mb-8 animate-fade-in">
+          <h1 className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-900 bg-clip-text text-transparent mb-2">
             {language === 'hi' ? 'परामर्श इतिहास' : 'Consultation History'}
           </h1>
-          <p className="text-gray-600 text-lg font-semibold">
+          <p className="text-gray-600 text-base sm:text-lg font-semibold">
             {language === 'hi'
               ? 'अपने सभी पिछले परामर्शों को देखें और ट्रैक करें'
               : 'View and track all your past consultations'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="glass rounded-2xl p-6 border border-emerald-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-            <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-br from-emerald-500 to-teal-500 p-4 rounded-xl">
-                <Leaf className="w-8 h-8 text-white" />
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 mb-6 sm:mb-8">
+          <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-emerald-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+              <div className="bg-gradient-to-br from-emerald-500 to-teal-500 p-2 sm:p-4 rounded-lg sm:rounded-xl">
+                <Leaf className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
               </div>
               <div>
-                <p className="text-gray-600 font-bold">
+                <p className="text-gray-600 text-xs sm:text-base font-bold">
                   {language === 'hi' ? 'कुल परामर्श' : 'Total'}
                 </p>
-                <p className="text-3xl font-black text-gray-900">{stats.total}</p>
+                <p className="text-2xl sm:text-3xl font-black text-gray-900">{stats.total}</p>
               </div>
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-6 border border-green-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-            <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-br from-green-500 to-emerald-500 p-4 rounded-xl">
-                <TrendingUp className="w-8 h-8 text-white" />
+          <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-green-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+              <div className="bg-gradient-to-br from-green-500 to-emerald-500 p-2 sm:p-4 rounded-lg sm:rounded-xl">
+                <TrendingUp className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
               </div>
               <div>
-                <p className="text-gray-600 font-bold">
+                <p className="text-gray-600 text-xs sm:text-base font-bold">
                   {language === 'hi' ? 'पूर्ण' : 'Completed'}
                 </p>
-                <p className="text-3xl font-black text-gray-900">{stats.completed}</p>
+                <p className="text-2xl sm:text-3xl font-black text-gray-900">{stats.completed}</p>
               </div>
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-6 border border-blue-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-            <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-4 rounded-xl">
-                <Clock className="w-8 h-8 text-white" />
+          <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-blue-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-2 sm:p-4 rounded-lg sm:rounded-xl">
+                <Clock className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
               </div>
               <div>
-                <p className="text-gray-600 font-bold">
+                <p className="text-gray-600 text-xs sm:text-base font-bold">
                   {language === 'hi' ? 'सक्रिय' : 'Active'}
                 </p>
-                <p className="text-3xl font-black text-gray-900">{stats.active}</p>
+                <p className="text-2xl sm:text-3xl font-black text-gray-900">{stats.active}</p>
               </div>
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-6 border border-orange-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
-            <div className="flex items-center gap-4">
-              <div className="bg-gradient-to-br from-orange-500 to-red-500 p-4 rounded-xl">
-                <Filter className="w-8 h-8 text-white" />
+          <div className="glass rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-orange-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+              <div className="bg-gradient-to-br from-orange-500 to-red-500 p-2 sm:p-4 rounded-lg sm:rounded-xl">
+                <Filter className="w-5 h-5 sm:w-8 sm:h-8 text-white" />
               </div>
               <div>
-                <p className="text-gray-600 font-bold">
+                <p className="text-gray-600 text-xs sm:text-base font-bold">
                   {language === 'hi' ? 'बढ़ाया गया' : 'Escalated'}
                 </p>
-                <p className="text-3xl font-black text-gray-900">{stats.escalated}</p>
+                <p className="text-2xl sm:text-3xl font-black text-gray-900">{stats.escalated}</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="glass rounded-2xl p-6 border border-gray-200 shadow-xl mb-8">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 shadow-xl mb-6 sm:mb-8">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder={language === 'hi' ? 'फसल या रोग खोजें...' : 'Search by crop or disease...'}
-                className="w-full pl-12 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 focus:outline-none font-semibold text-gray-900"
+                className="w-full pl-10 sm:pl-12 pr-3 sm:pr-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 focus:outline-none text-sm sm:text-base font-semibold text-gray-900"
               />
             </div>
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-6 py-3 border-2 border-gray-200 rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 focus:outline-none font-semibold text-gray-900 bg-white"
+              className="px-4 sm:px-6 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 focus:outline-none text-sm sm:text-base font-semibold text-gray-900 bg-white"
             >
               <option value="all">{language === 'hi' ? 'सभी स्थिति' : 'All Status'}</option>
               <option value="active">{language === 'hi' ? 'सक्रिय' : 'Active'}</option>
@@ -234,17 +234,17 @@ export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardPr
             {filteredConsultations.map((consultation) => (
               <div
                 key={consultation.id}
-                className="glass rounded-2xl p-6 border border-gray-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-[1.02] cursor-pointer"
+                className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-gray-200 shadow-xl hover:shadow-2xl transition-all transform hover:scale-[1.02] cursor-pointer"
                 onClick={() => onViewDetails(consultation.id)}
               >
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex flex-col gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <Leaf className="w-6 h-6 text-emerald-600" />
-                      <h3 className="text-xl font-black text-gray-900">
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+                      <Leaf className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600" />
+                      <h3 className="text-lg sm:text-xl font-black text-gray-900">
                         {consultation.crop_name}
                       </h3>
-                      <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                      <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-bold ${
                         consultation.status === 'completed'
                           ? 'bg-green-100 text-green-700'
                           : consultation.status === 'active'
@@ -260,30 +260,30 @@ export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardPr
                     </div>
 
                     {consultation.disease_name && (
-                      <p className="text-gray-700 font-bold mb-2">
+                      <p className="text-sm sm:text-base text-gray-700 font-bold mb-2">
                         {language === 'hi' ? 'निदान: ' : 'Diagnosis: '}
                         <span className="text-red-600">{consultation.disease_name}</span>
                       </p>
                     )}
 
-                    <div className="flex flex-wrap gap-4 text-sm text-gray-600 font-semibold">
+                    <div className="flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm text-gray-600 font-semibold">
                       {consultation.location && (
-                        <div className="flex items-center gap-2">
-                          <MapPin className="w-4 h-4" />
+                        <div className="flex items-center gap-1 sm:gap-2">
+                          <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                           {consultation.location}
                         </div>
                       )}
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4" />
+                      <div className="flex items-center gap-1 sm:gap-2">
+                        <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
                         {new Date(consultation.created_at).toLocaleDateString(language === 'hi' ? 'hi-IN' : 'en-US', {
                           year: 'numeric',
-                          month: 'long',
+                          month: 'short',
                           day: 'numeric',
                         })}
                       </div>
                       {consultation.confidence_score && (
-                        <div className="flex items-center gap-2">
-                          <TrendingUp className="w-4 h-4" />
+                        <div className="flex items-center gap-1 sm:gap-2">
+                          <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
                           {language === 'hi' ? 'विश्वास: ' : 'Confidence: '}
                           {(consultation.confidence_score * 100).toFixed(0)}%
                         </div>
@@ -296,9 +296,9 @@ export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardPr
                       e.stopPropagation();
                       onViewDetails(consultation.id);
                     }}
-                    className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl font-bold hover:from-emerald-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 self-start md:self-center"
+                    className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl text-sm sm:text-base font-bold hover:from-emerald-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
                   >
-                    <Eye className="w-5 h-5" />
+                    <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
                     {language === 'hi' ? 'विवरण देखें' : 'View Details'}
                   </button>
                 </div>

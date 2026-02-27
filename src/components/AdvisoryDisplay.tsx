@@ -233,64 +233,64 @@ export function AdvisoryDisplay({
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-lime-50 animate-gradient relative overflow-hidden">
       <div className="gradient-mesh absolute inset-0 opacity-50"></div>
-      <div className="container mx-auto px-4 py-10 max-w-5xl relative z-10 animate-fade-in">
-        <div className="glass-strong rounded-3xl shadow-2xl overflow-hidden border border-white/20 backdrop-blur-xl">
-          <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 text-white p-10 relative overflow-hidden animate-gradient">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-10 max-w-5xl relative z-10 animate-fade-in">
+        <div className="glass-strong rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden border border-white/20 backdrop-blur-xl">
+          <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-600 text-white p-6 sm:p-10 relative overflow-hidden animate-gradient">
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
-            <div className="flex items-center justify-between relative z-10 animate-slide-up">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10 animate-slide-up">
               <div>
-                <h1 className="text-5xl font-black mb-4 drop-shadow-lg">{translate('diagnosis', language)}</h1>
-                <p className="text-3xl font-bold text-white drop-shadow-md">{advisory.diseaseName}</p>
+                <h1 className="text-3xl sm:text-5xl font-black mb-2 sm:mb-4 drop-shadow-lg">{translate('diagnosis', language)}</h1>
+                <p className="text-xl sm:text-3xl font-bold text-white drop-shadow-md">{advisory.diseaseName}</p>
               </div>
               {('speechSynthesis' in window) && (
                 <button
                   onClick={speakAdvisory}
-                  className={`p-5 rounded-2xl transition-all duration-300 shadow-2xl border-2 transform hover:scale-110 ${
+                  className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 shadow-2xl border-2 transform hover:scale-110 ${
                     speaking
                       ? 'bg-red-500 hover:bg-red-600 border-red-700 animate-pulse'
                       : 'bg-white/20 hover:bg-white/30 border-white/30 backdrop-blur-sm'
                   }`}
                 >
-                  <Volume2 className="w-8 h-8" />
+                  <Volume2 className="w-6 h-6 sm:w-8 sm:h-8" />
                 </button>
               )}
             </div>
           </div>
 
-          <div className="p-10 space-y-8">
-            <div className={`rounded-2xl border-2 p-8 shadow-2xl animate-scale-in hover:scale-105 transition-transform duration-300 ${confidenceColor}`}>
-              <div className="flex items-center gap-6">
-                <ConfidenceIcon className="w-12 h-12 animate-pulse" />
-                <div className="flex-1">
-                  <p className="font-black text-2xl mb-4">
+          <div className="p-4 sm:p-10 space-y-6 sm:space-y-8">
+            <div className={`rounded-xl sm:rounded-2xl border-2 p-4 sm:p-8 shadow-2xl animate-scale-in hover:scale-105 transition-transform duration-300 ${confidenceColor}`}>
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
+                <ConfidenceIcon className="w-8 h-8 sm:w-12 sm:h-12 animate-pulse" />
+                <div className="flex-1 w-full">
+                  <p className="font-black text-lg sm:text-2xl mb-2 sm:mb-4">
                     {translate('confidenceLevel', language)}: {advisory.confidenceLevel}
                   </p>
-                  <div className="w-full bg-white rounded-full h-4 border-2 border-current/30 shadow-inner">
+                  <div className="w-full bg-white rounded-full h-3 sm:h-4 border-2 border-current/30 shadow-inner">
                     <div
                       className="h-full rounded-full bg-current shadow-lg transition-all duration-700"
                       style={{ width: `${advisory.confidenceScore * 100}%` }}
                     />
                   </div>
                 </div>
-                <span className="text-4xl font-black">
+                <span className="text-2xl sm:text-4xl font-black">
                   {Math.round(advisory.confidenceScore * 100)}%
                 </span>
               </div>
             </div>
 
             {advisory.escalated && (
-              <div className="bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-400 rounded-2xl p-8 shadow-2xl animate-scale-in hover:shadow-amber-300 transition-shadow duration-300">
-                <div className="flex gap-6">
-                  <AlertTriangle className="w-12 h-12 text-amber-800 flex-shrink-0 mt-1 animate-pulse" />
+              <div className="bg-gradient-to-r from-amber-100 to-orange-100 border-2 border-amber-400 rounded-xl sm:rounded-2xl p-4 sm:p-8 shadow-2xl animate-scale-in hover:shadow-amber-300 transition-shadow duration-300">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                  <AlertTriangle className="w-10 h-10 sm:w-12 sm:h-12 text-amber-800 flex-shrink-0 animate-pulse" />
                   <div>
-                    <p className="font-black text-2xl text-amber-900 mb-4">
+                    <p className="font-black text-xl sm:text-2xl text-amber-900 mb-3 sm:mb-4">
                       {language === 'hi' ? 'महत्वपूर्ण सिफारिश' : 'Important Recommendation'}
                     </p>
-                    <p className="text-amber-900 text-lg font-bold leading-relaxed mb-6">
+                    <p className="text-amber-900 text-base sm:text-lg font-bold leading-relaxed mb-4 sm:mb-6">
                       {translate('escalationWarning', language)}
                     </p>
-                    <div className="bg-gradient-to-r from-amber-200 to-orange-200 px-6 py-4 rounded-2xl inline-block shadow-lg border-2 border-amber-400 transform hover:scale-105 transition-transform duration-300">
-                      <p className="text-amber-900 text-xl font-black">
+                    <div className="bg-gradient-to-r from-amber-200 to-orange-200 px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl inline-block shadow-lg border-2 border-amber-400 transform hover:scale-105 transition-transform duration-300">
+                      <p className="text-amber-900 text-base sm:text-xl font-black">
                         {language === 'hi'
                           ? 'किसान कॉल सेंटर: 1800-180-1551'
                           : 'Kisan Call Centre: 1800-180-1551'}
@@ -301,34 +301,34 @@ export function AdvisoryDisplay({
               </div>
             )}
 
-            <div className="glass rounded-2xl p-8 border border-gray-200 shadow-2xl animate-slide-up hover:shadow-gray-300 transition-shadow duration-300" style={{ animationDelay: '0.1s' }}>
-              <h3 className="text-3xl font-black text-gray-900 mb-6">
+            <div className="glass rounded-xl sm:rounded-2xl p-4 sm:p-8 border border-gray-200 shadow-2xl animate-slide-up hover:shadow-gray-300 transition-shadow duration-300" style={{ animationDelay: '0.1s' }}>
+              <h3 className="text-2xl sm:text-3xl font-black text-gray-900 mb-4 sm:mb-6">
                 {translate('description', language)}
               </h3>
-              <p className="text-gray-800 leading-loose text-xl font-semibold">{advisory.description}</p>
+              <p className="text-gray-800 leading-loose text-base sm:text-xl font-semibold">{advisory.description}</p>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-100 via-cyan-100 to-teal-100 rounded-2xl p-8 border-2 border-blue-400 shadow-2xl animate-slide-up hover:shadow-blue-300 transition-shadow duration-300" style={{ animationDelay: '0.2s' }}>
-              <h3 className="text-3xl font-black text-blue-900 mb-6">
+            <div className="bg-gradient-to-br from-blue-100 via-cyan-100 to-teal-100 rounded-xl sm:rounded-2xl p-4 sm:p-8 border-2 border-blue-400 shadow-2xl animate-slide-up hover:shadow-blue-300 transition-shadow duration-300" style={{ animationDelay: '0.2s' }}>
+              <h3 className="text-2xl sm:text-3xl font-black text-blue-900 mb-4 sm:mb-6">
                 💊 {translate('treatment', language)}
               </h3>
-              <div className="space-y-5">
+              <div className="space-y-3 sm:space-y-5">
                 {advisory.actionSteps.map((step, index) => (
-                  <div key={step.step} className="flex gap-5 glass border border-blue-200 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-scale-in" style={{ animationDelay: `${0.05 * index}s` }}>
-                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-2xl flex items-center justify-center font-black text-xl shadow-lg">
+                  <div key={step.step} className="flex gap-3 sm:gap-5 glass border border-blue-200 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 animate-scale-in" style={{ animationDelay: `${0.05 * index}s` }}>
+                    <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-blue-600 to-cyan-600 text-white rounded-xl sm:rounded-2xl flex items-center justify-center font-black text-lg sm:text-xl shadow-lg">
                       {step.step}
                     </div>
-                    <p className="text-gray-900 pt-2 font-bold text-lg leading-relaxed">{step.action}</p>
+                    <p className="text-gray-900 pt-1 sm:pt-2 font-bold text-sm sm:text-lg leading-relaxed">{step.action}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-emerald-100 via-teal-100 to-lime-100 rounded-2xl p-8 border-2 border-emerald-400 shadow-2xl animate-slide-up hover:shadow-emerald-300 transition-shadow duration-300" style={{ animationDelay: '0.3s' }}>
-              <h3 className="text-3xl font-black text-emerald-900 mb-6">
+            <div className="bg-gradient-to-br from-emerald-100 via-teal-100 to-lime-100 rounded-xl sm:rounded-2xl p-4 sm:p-8 border-2 border-emerald-400 shadow-2xl animate-slide-up hover:shadow-emerald-300 transition-shadow duration-300" style={{ animationDelay: '0.3s' }}>
+              <h3 className="text-2xl sm:text-3xl font-black text-emerald-900 mb-4 sm:mb-6">
                 🛡️ {translate('prevention', language)}
               </h3>
-              <p className="text-gray-900 leading-loose text-xl font-bold">{advisory.prevention}</p>
+              <p className="text-gray-900 leading-loose text-base sm:text-xl font-bold">{advisory.prevention}</p>
             </div>
 
             <div className="glass rounded-2xl p-6 border border-gray-300 shadow-lg animate-fade-in" style={{ animationDelay: '0.4s' }}>
