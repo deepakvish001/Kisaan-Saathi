@@ -122,7 +122,7 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
 
       <div className="grid gap-4">
         {profiles.map((farm) => (
-          <button
+          <div
             key={farm.id}
             onClick={() => {
               setSelectedFarmId(farm.id);
@@ -130,7 +130,7 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
                 setSelectedFieldId(farm.fields[0].id);
               }
             }}
-            className={`p-4 border-2 rounded-xl text-left transition-all ${
+            className={`p-4 border-2 rounded-xl text-left transition-all cursor-pointer ${
               selectedFarmId === farm.id
                 ? 'border-emerald-600 bg-emerald-50'
                 : 'border-gray-200 hover:border-gray-300'
@@ -217,7 +217,7 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
                 </div>
               </div>
             )}
-          </button>
+          </div>
         ))}
       </div>
 
