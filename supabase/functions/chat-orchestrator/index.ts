@@ -33,8 +33,13 @@ Deno.serve(async (req: Request) => {
 
   try {
     const authHeader = req.headers.get('Authorization');
+    const apikeyHeader = req.headers.get('apikey');
 
-    console.log('Auth check - has header:', !!authHeader);
+    console.log('Auth check:', {
+      hasAuthHeader: !!authHeader,
+      hasApikeyHeader: !!apikeyHeader,
+      authHeaderPrefix: authHeader?.substring(0, 10)
+    });
 
     if (!authHeader) {
       console.error('No authorization header provided');

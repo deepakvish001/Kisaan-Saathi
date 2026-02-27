@@ -97,6 +97,15 @@ export async function sendMessage(
 ) {
   const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
+  console.log('sendMessage - Session check:', {
+    hasSession: !!session,
+    hasAccessToken: !!session?.access_token,
+    sessionError: sessionError?.message,
+    tokenExpiry: session?.expires_at ? new Date(session.expires_at * 1000).toISOString() : 'N/A',
+    currentTime: new Date().toISOString(),
+    userId: session?.user?.id
+  });
+
   if (sessionError || !session?.access_token) {
     throw new Error('Unauthorized - Please log in');
   }
@@ -124,10 +133,17 @@ export async function sendMessage(
   );
 
   if (!response.ok) {
-    if (response.status === 401) {
-      throw new Error('Unauthorized - Please log in');
-    }
     const errorData = await response.json().catch(() => ({}));
+    console.error('Edge function error response:', {
+      status: response.status,
+      errorData,
+      headers: Object.fromEntries(response.headers.entries())
+    });
+
+    if (response.status === 401) {
+      const details = errorData.details || errorData.error || 'Please log in';
+      throw new Error(`Unauthorized - ${details}`);
+    }
     throw new Error(errorData.error || 'Failed to send message');
   }
 
