@@ -108,6 +108,7 @@ export async function sendMessage(
       headers: {
         'Authorization': `Bearer ${session.access_token}`,
         'Content-Type': 'application/json',
+        'apikey': supabaseAnonKey,
       },
       body: JSON.stringify({
         sessionId,
@@ -150,6 +151,7 @@ export async function generateAdvisory(
       headers: {
         'Authorization': `Bearer ${session.access_token}`,
         'Content-Type': 'application/json',
+        'apikey': supabaseAnonKey,
       },
       body: JSON.stringify({
         conversationId,
