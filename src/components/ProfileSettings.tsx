@@ -37,6 +37,10 @@ export function ProfileSettings({ language }: ProfileSettingsProps) {
 
   async function loadProfile() {
     try {
+      if (!user) {
+        throw new Error('No user found');
+      }
+
       const { data, error } = await supabase
         .from('user_profiles')
         .select('*')
@@ -60,8 +64,8 @@ export function ProfileSettings({ language }: ProfileSettingsProps) {
       setMessage({
         type: 'error',
         text: language === 'hi'
-          ? 'प्रोफ़ाइल लोड करते समय त्रुटि हुई'
-          : 'Error loading profile',
+          ? 'प्रोफ़ाइल लोड करते समय त्रुटि हुई। कृपया पुनः प्रयास करें।'
+          : 'Error loading profile. Please try again.',
       });
     } finally {
       setLoading(false);

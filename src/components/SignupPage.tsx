@@ -107,8 +107,8 @@ export default function SignupPage({ onNavigate }: SignupPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 flex items-center justify-center p-4">
-      <div className="absolute top-4 right-4">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 flex items-start justify-center p-4 py-8 overflow-y-auto">
+      <div className="absolute top-4 right-4 z-10">
         <button
           onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
           className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300"
@@ -118,7 +118,7 @@ export default function SignupPage({ onNavigate }: SignupPageProps) {
         </button>
       </div>
 
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md my-auto">
         <div className="bg-white rounded-2xl shadow-xl p-8 transform transition-all duration-300 hover:shadow-2xl">
           <div className="flex justify-center mb-6">
             <div className="p-3 bg-teal-600 rounded-xl shadow-lg">

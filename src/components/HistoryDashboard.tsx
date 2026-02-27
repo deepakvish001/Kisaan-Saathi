@@ -23,6 +23,7 @@ interface HistoryDashboardProps {
 export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardProps) {
   const [consultations, setConsultations] = useState<Consultation[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const { user } = useAuth();
@@ -30,11 +31,17 @@ export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardPr
   useEffect(() => {
     if (user) {
       loadConsultations();
+    } else {
+      setLoading(false);
+      setError(language === 'hi'
+        ? 'कृपया लॉगिन करें'
+        : 'Please log in');
     }
   }, [user]);
 
   async function loadConsultations() {
     try {
+      setError(null);
       const { data: conversations, error } = await supabase
         .from('conversations')
         .select(`
@@ -70,6 +77,9 @@ export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardPr
       setConsultations(formatted);
     } catch (error) {
       console.error('Error loading consultations:', error);
+      setError(language === 'hi'
+        ? 'परामर्श लोड करते समय त्रुटि हुई। कृपया पुनः प्रयास करें।'
+        : 'Error loading consultations. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -196,6 +206,19 @@ export function HistoryDashboard({ language, onViewDetails }: HistoryDashboardPr
             <p className="mt-4 text-gray-600 font-semibold">
               {language === 'hi' ? 'लोड हो रहा है...' : 'Loading...'}
             </p>
+          </div>
+        ) : error ? (
+          <div className="text-center py-16 glass rounded-2xl border border-red-200">
+            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Filter className="w-8 h-8 text-red-400" />
+            </div>
+            <p className="text-red-600 text-xl font-bold mb-4">{error}</p>
+            <button
+              onClick={loadConsultations}
+              className="px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-colors"
+            >
+              {language === 'hi' ? 'पुनः प्रयास करें' : 'Try Again'}
+            </button>
           </div>
         ) : filteredConsultations.length === 0 ? (
           <div className="text-center py-16 glass rounded-2xl border border-gray-200">

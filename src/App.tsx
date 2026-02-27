@@ -298,11 +298,11 @@ function AppContent() {
       </div>
 
       {showAuthModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-md w-full">
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-start justify-center overflow-y-auto p-4 py-8">
+          <div className="relative max-w-md w-full my-auto">
             <button
               onClick={handleCloseAuth}
-              className="absolute -top-4 -right-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-gray-900 hover:scale-110 transition-all z-10"
+              className="sticky top-0 left-full -ml-5 mb-4 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-gray-900 hover:scale-110 transition-all z-10"
             >
               ✕
             </button>

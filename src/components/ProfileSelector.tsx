@@ -14,6 +14,7 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
   const [selectedFarmId, setSelectedFarmId] = useState<string | null>(null);
   const [selectedFieldId, setSelectedFieldId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     loadProfiles();
@@ -21,6 +22,7 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
 
   async function loadProfiles() {
     try {
+      setError(null);
       const data = await fetchFarmProfiles();
       setProfiles(data);
       if (data.length > 0) {
@@ -32,6 +34,9 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
       }
     } catch (error) {
       console.error('Error loading profiles:', error);
+      setError(language === 'hi'
+        ? 'प्रोफ़ाइल लोड करते समय त्रुटि हुई। कृपया पुनः प्रयास करें।'
+        : 'Error loading profiles. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -55,6 +60,27 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
     return (
       <div className="p-8 text-center">
         <div className="inline-block w-8 h-8 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
+        <p className="mt-4 text-gray-600 font-semibold">
+          {language === 'hi' ? 'लोड हो रहा है...' : 'Loading...'}
+        </p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-8 text-center">
+        <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <MapPin className="w-8 h-8 text-red-400" />
+        </div>
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">{language === 'hi' ? 'त्रुटि' : 'Error'}</h3>
+        <p className="text-gray-600 mb-6">{error}</p>
+        <button
+          onClick={loadProfiles}
+          className="px-6 py-3 bg-emerald-600 text-white rounded-xl font-semibold hover:bg-emerald-700 transition-colors"
+        >
+          {language === 'hi' ? 'पुनः प्रयास करें' : 'Try Again'}
+        </button>
       </div>
     );
   }
