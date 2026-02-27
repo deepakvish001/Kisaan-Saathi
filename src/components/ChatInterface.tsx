@@ -127,11 +127,15 @@ export function ChatInterface({
     setShowImageUpload(false);
 
     try {
-      console.log('Attempting to send message. Auth check:', {
-        hasUser: !!user,
-        hasSession: !!session,
-        hasAccessToken: !!session?.access_token
-      });
+      console.log('=== AUTH CHECK ===');
+      console.log('Has user:', !!user);
+      console.log('Has session:', !!session);
+      console.log('Has access token:', !!session?.access_token);
+      console.log('User ID:', user?.id);
+      console.log('Token expires at:', session?.expires_at ? new Date(session.expires_at * 1000).toISOString() : 'N/A');
+      console.log('Current time:', new Date().toISOString());
+      console.log('Token expired?', session?.expires_at ? Date.now() > session.expires_at * 1000 : 'Unknown');
+      console.log('==================');
 
       if (!user || !session?.access_token) {
         console.error('Auth check failed - no user or session token');
@@ -175,24 +179,23 @@ export function ChatInterface({
 
       setTimeout(() => setAssistantState('idle'), 2000);
     } catch (error: any) {
-      console.error('Error sending message:', {
-        error,
-        message: error?.message,
-        stack: error?.stack,
-        response: error?.response
-      });
+      console.error('=== ERROR DETAILS ===');
+      console.error('Error type:', error?.constructor?.name);
+      console.error('Error message:', error?.message);
+      console.error('Full error:', error);
+      console.error('====================');
 
       let errorContent = language === 'hi'
         ? 'क्षमा करें, एक त्रुटि हुई। कृपया पुनः प्रयास करें।'
         : 'Sorry, an error occurred. Please try again.';
 
       if (error?.message?.includes('Unauthorized') || error?.message?.includes('401')) {
-        console.error('Unauthorized error detected. Current auth state:', {
-          hasUser: !!user,
-          hasSession: !!session,
-          hasAccessToken: !!session?.access_token,
-          errorMessage: error?.message
-        });
+        console.error('=== UNAUTHORIZED ERROR ===');
+        console.error('Has user:', !!user);
+        console.error('Has session:', !!session);
+        console.error('Has access token:', !!session?.access_token);
+        console.error('Error message:', error?.message);
+        console.error('=========================');
         errorContent = language === 'hi'
           ? 'कृपया पहले लॉगिन करें या अपना खाता बनाएं।'
           : 'Please log in or create an account first.';

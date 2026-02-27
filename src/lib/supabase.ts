@@ -97,14 +97,15 @@ export async function sendMessage(
 ) {
   const { data: { session }, error: sessionError } = await supabase.auth.getSession();
 
-  console.log('sendMessage - Session check:', {
-    hasSession: !!session,
-    hasAccessToken: !!session?.access_token,
-    sessionError: sessionError?.message,
-    tokenExpiry: session?.expires_at ? new Date(session.expires_at * 1000).toISOString() : 'N/A',
-    currentTime: new Date().toISOString(),
-    userId: session?.user?.id
-  });
+  console.log('=== SUPABASE.TS SESSION CHECK ===');
+  console.log('Has session:', !!session);
+  console.log('Has access token:', !!session?.access_token);
+  console.log('Session error:', sessionError?.message);
+  console.log('Token expiry:', session?.expires_at ? new Date(session.expires_at * 1000).toISOString() : 'N/A');
+  console.log('Current time:', new Date().toISOString());
+  console.log('User ID:', session?.user?.id);
+  console.log('Token preview:', session?.access_token ? session.access_token.substring(0, 20) + '...' : 'N/A');
+  console.log('==================================');
 
   if (sessionError || !session?.access_token) {
     throw new Error('Unauthorized - Please log in');
@@ -134,11 +135,13 @@ export async function sendMessage(
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
-    console.error('Edge function error response:', {
-      status: response.status,
-      errorData,
-      headers: Object.fromEntries(response.headers.entries())
-    });
+    console.error('=== EDGE FUNCTION ERROR ===');
+    console.error('Status:', response.status);
+    console.error('Status text:', response.statusText);
+    console.error('Error data:', JSON.stringify(errorData, null, 2));
+    console.error('Error message:', errorData.error);
+    console.error('Error details:', errorData.details);
+    console.error('==========================');
 
     if (response.status === 401) {
       const details = errorData.details || errorData.error || 'Please log in';
