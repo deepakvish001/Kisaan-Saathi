@@ -1,4 +1,4 @@
-import { Sprout, Phone, Mail, MapPin, ExternalLink, Heart } from 'lucide-react';
+import { Sprout, Phone, ExternalLink, Heart } from 'lucide-react';
 import { type Language } from '../lib/translations';
 
 interface FooterProps {

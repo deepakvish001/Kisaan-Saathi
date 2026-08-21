@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { History, Calendar, CheckCircle, TrendingUp, FileText } from 'lucide-react';
+import { History, Calendar, CheckCircle, FileText } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { type Language } from '../lib/translations';
 import { TreatmentPlan } from './TreatmentPlan';

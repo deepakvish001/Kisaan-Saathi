@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sprout, User as UserIcon, LogOut, Settings, History, Home } from 'lucide-react';
+import { Sprout, LogOut, Settings, History, Home } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { translate, Language } from '../lib/translations';
 

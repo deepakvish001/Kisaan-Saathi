@@ -104,9 +104,6 @@ export function ProfileSelector({ language, onSelectProfile, onCreateNew }: Prof
     );
   }
 
-  const selectedFarm = profiles.find(p => p.id === selectedFarmId);
-  const selectedField = selectedFarm?.fields?.find(f => f.id === selectedFieldId);
-
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Sprout, Languages, MapPin, Brain, Globe, BookOpen, Clock, Shield, Gift, ChevronDown, Zap, TrendingUp } from 'lucide-react';
+import { Sprout, Languages, MapPin, Brain, Globe, BookOpen, Clock, Gift, ChevronDown, Zap, TrendingUp } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { fetchCrops, type Crop } from '../lib/supabase';
 import { translate, type Language } from '../lib/translations';

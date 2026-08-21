@@ -5,8 +5,13 @@ import { supabase } from '../lib/supabase';
 interface UserProfile {
   id: string;
   full_name: string;
-  phone?: string;
-  location?: string;
+  // `phone`/`location` are nullable text columns in user_profiles (see
+  // supabase/migrations/20260226185022_add_user_profiles_and_auth_links.sql),
+  // and callers clear them by passing null through updateProfile()'s
+  // Supabase .update() call — undefined would be dropped by JSON
+  // serialization and silently leave the old value in place instead.
+  phone?: string | null;
+  location?: string | null;
   preferred_language: 'en' | 'hi';
   created_at: string;
   updated_at: string;
