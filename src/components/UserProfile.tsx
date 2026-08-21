@@ -77,6 +77,7 @@ export default function UserProfile({ onClose }: UserProfileProps) {
           <h2 className="text-2xl font-bold text-gray-900">{t('profile')}</h2>
           <button
             onClick={onClose}
+            aria-label={t('close')}
             className="text-gray-500 hover:text-gray-700 transition-colors"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

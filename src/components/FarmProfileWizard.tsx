@@ -85,6 +85,7 @@ export function FarmProfileWizard({ language, onComplete, onSkip, onClose }: Far
   const t = (key: string) => {
     const translations: Record<string, Record<Language, string>> = {
       wizardTitle: { en: 'Farm Profile Setup', hi: 'फार्म प्रोफ़ाइल सेटअप' },
+      close: { en: 'Close', hi: 'बंद करें' },
       skipForNow: { en: 'Skip for now', hi: 'अभी छोड़ें' },
       next: { en: 'Next', hi: 'आगे' },
       back: { en: 'Back', hi: 'पीछे' },
@@ -211,6 +212,7 @@ export function FarmProfileWizard({ language, onComplete, onSkip, onClose }: Far
             <h2 className="text-2xl font-bold text-gray-900">{t('wizardTitle')}</h2>
             <button
               onClick={onClose}
+              aria-label={t('close')}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
               <X className="w-5 h-5" />

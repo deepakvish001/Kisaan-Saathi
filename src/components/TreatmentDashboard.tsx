@@ -119,6 +119,7 @@ export function TreatmentDashboard({ language, userId, onClose }: TreatmentDashb
             </h2>
             <button
               onClick={onClose}
+              aria-label={language === 'hi' ? 'बंद करें' : 'Close'}
               className="p-2 hover:bg-white/20 rounded-xl transition-colors"
             >
               <X className="w-6 h-6" />
