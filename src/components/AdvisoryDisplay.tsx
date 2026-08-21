@@ -245,6 +245,7 @@ export function AdvisoryDisplay({
               {('speechSynthesis' in window) && (
                 <button
                   onClick={speakAdvisory}
+                  aria-label={speaking ? (language === 'hi' ? 'पढ़ना बंद करें' : 'Stop reading') : (language === 'hi' ? 'सलाह पढ़ें' : 'Read advisory aloud')}
                   className={`p-3 sm:p-5 rounded-xl sm:rounded-2xl transition-all duration-300 shadow-2xl border-2 transform hover:scale-110 ${
                     speaking
                       ? 'bg-red-500 hover:bg-red-600 border-red-700 animate-pulse'
