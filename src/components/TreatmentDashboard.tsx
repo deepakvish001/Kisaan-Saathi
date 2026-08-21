@@ -19,7 +19,6 @@ export function TreatmentDashboard({ language, userId, onClose }: TreatmentDashb
   const [weatherData, setWeatherData] = useState<any>(null);
   const [weatherLoading, setWeatherLoading] = useState(false);
   const [weatherError, setWeatherError] = useState<string | null>(null);
-  const [userLocation, setUserLocation] = useState<{ lat: number; lon: number } | null>(null);
 
   useEffect(() => {
     loadWeatherData();
@@ -37,14 +36,12 @@ export function TreatmentDashboard({ language, userId, onClose }: TreatmentDashb
         .maybeSingle();
 
       if (preferences) {
-        setUserLocation({ lat: preferences.latitude, lon: preferences.longitude });
         await fetchWeather(preferences.latitude, preferences.longitude);
       } else {
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(
             async (position) => {
               const { latitude, longitude } = position.coords;
-              setUserLocation({ lat: latitude, lon: longitude });
               await fetchWeather(latitude, longitude);
 
               await supabase.from('weather_preferences').insert({

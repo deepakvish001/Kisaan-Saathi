@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Clock, Leaf, MapPin, TrendingUp, Search, Filter, Eye } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { translate, type Language } from '../lib/translations';
+import { type Language } from '../lib/translations';
 import { useAuth } from '../contexts/AuthContext';
 
 interface Consultation {

@@ -29,13 +29,6 @@ export function DiagnosticProgress({
       ? 'bg-yellow-600'
       : 'bg-orange-600';
 
-  const confidenceTextColor =
-    confidence >= 0.75
-      ? 'text-green-700'
-      : confidence >= 0.5
-      ? 'text-yellow-700'
-      : 'text-orange-700';
-
   return (
     <div className="glass-strong border border-white/20 rounded-3xl p-6 space-y-6 shadow-2xl animate-scale-in backdrop-blur-xl">
       <div>

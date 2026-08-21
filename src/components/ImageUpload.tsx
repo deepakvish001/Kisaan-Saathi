@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
-import { Camera, Image as ImageIcon, X, Upload, Loader, Sparkles, CheckCircle, AlertCircle } from 'lucide-react';
+import { Camera, Image as ImageIcon, X, Loader, Sparkles, CheckCircle, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import { translate, type Language } from '../lib/translations';
+import { type Language } from '../lib/translations';
 
 interface UploadedImage {
   id: string;

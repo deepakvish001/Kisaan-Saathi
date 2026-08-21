@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Send, Mic, MicOff, Loader2, Image as ImageIcon, Volume2, VolumeX } from 'lucide-react';
-import { sendMessage, type Message, supabase } from '../lib/supabase';
+import { sendMessage, type Message } from '../lib/supabase';
 import { translate, type Language } from '../lib/translations';
 import { useAuth } from '../contexts/AuthContext';
 import { AssistantAvatar, type AssistantState } from './AssistantAvatar';
@@ -217,7 +217,7 @@ export function ChatInterface({
     setUploadedImages(prev => [...prev, ...imageUrls]);
   }
 
-  function handleAnalysisComplete(symptoms: string[], imageId: string) {
+  function handleAnalysisComplete(symptoms: string[], _imageId: string) {
     if (symptoms.length > 0) {
       const symptomMessage = language === 'hi'
         ? `छवि विश्लेषण से पता चला: ${symptoms.join(', ')}`

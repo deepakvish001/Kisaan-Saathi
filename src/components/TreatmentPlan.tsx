@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Clock, CheckCircle, Circle, AlertCircle, Plus } from 'lucide-react';
+import { Calendar, Clock, CheckCircle, Circle, AlertCircle } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { type Language } from '../lib/translations';
 
@@ -29,10 +29,9 @@ interface TreatmentPlanData {
 interface TreatmentPlanProps {
   planId: string;
   language: Language;
-  onClose?: () => void;
 }
 
-export function TreatmentPlan({ planId, language, onClose }: TreatmentPlanProps) {
+export function TreatmentPlan({ planId, language }: TreatmentPlanProps) {
   const [plan, setPlan] = useState<TreatmentPlanData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selectedStep, setSelectedStep] = useState<TreatmentStep | null>(null);

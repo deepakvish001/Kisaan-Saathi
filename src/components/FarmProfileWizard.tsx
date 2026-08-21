@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { X, ChevronRight, ChevronLeft, Check, MapPin, Droplets, Leaf, History, Clock } from 'lucide-react';
-import { translate, type Language } from '../lib/translations';
+import { type Language } from '../lib/translations';
 
 export interface FarmProfileData {
   farmName: string;
